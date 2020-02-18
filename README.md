@@ -1,39 +1,32 @@
-# Title ![Latest Stable Version](https://img.shields.io/github/v/release/florianschleuss/<--repo-->) ![Repository Size](https://img.shields.io/github/repo-size/florianschleuss/<--repo-->) ![License](https://img.shields.io/github/license/florianschleuss/<--repo-->)
+# Title ![Latest Stable Version](https://img.shields.io/github/v/release/florianschleuss/restful-python-api) ![Repository Size](https://img.shields.io/github/repo-size/florianschleuss/restful-python-api) ![License](https://img.shields.io/github/license/florianschleuss/restful-python-api)
 
-#### Table of Contents
-1. [Basic Instruction](#basic-instruction)
-2. [Main Part](#main-part)
-3. [License](#license)
+## Table of Contents
 
-## Basic Instruction
-Basic Instruction with [Wikipedia](https://de.wikipedia.org/).
+1. [Installation](#installation)
+2. [License](#license)
 
-## Main Part
-Part with main content and explonations
+## Installation
 
-A Java code snippet
+1. Make sure you have Python 3.7 or above installed. Additionaly install Pip for your corrosponding version.
 
-```Java
-public class TicTacToe {
+2. After that install all requirements from repository root folder with:
 
-  private int ROWS = 3;
-  private int COLS = 3;
-  public Player[][] board;
-  public enum Player {
-    Unknown, X, O
-  }
-}
-```
+   ``` bash
+   pip install -r requirements.txt
+   ```
 
-And a Python snippet
+3. Start the Python Rest Server from repository root folder with:
 
-```Python
-class Python:
+   ``` bash
+   python ./api_server/mainSvc.py
+   ```
 
-  def function(int var_name):
-    var_name += 1
-    return var_name
-```
+4. Start the Python Rest Client from repository root folder with:
+
+   ``` bash
+   python ./api_client/client.py
+   ```
 
 ## License
+
 The Repository is licensed under the terms of the [GPL Open Source](LICENSE) license and is available for free.

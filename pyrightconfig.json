@@ -1,0 +1,10 @@
+{
+    "ignore": [
+    ],
+    "reportMissingImports": false,
+    "reportMissingTypeStubs": false,
+  
+    "reportUnknownParameterType": false,
+  
+    "reportUnnecessaryCast": false
+  }
