@@ -9,7 +9,23 @@ def main():
     print(response.text)
 
     response = r.post(
-        'http://localhost:5000/api/v1/name/welcome', json={"name": "Flo"})
+        'http://localhost:5000/api/v1/customer/hpe', json={"name": "Hewlette Packard Enterprise"})
+    print(response.text)
+
+    response = r.get('http://localhost:5000/api/v1/customer/hpe')
+    print(response.text)
+
+    response = r.patch(
+        'http://localhost:5000/api/v1/customer/hpe', json={"name": "Hewlett Packard Enterprise"})
+    print(response.text)
+
+    response = r.get('http://localhost:5000/api/v1/customer/hpe')
+    print(response.text)
+
+    response = r.delete('http://localhost:5000/api/v1/customer/hpe')
+    print(response.text)
+
+    response = r.get('http://localhost:5000/api/v1/customers')
     print(response.text)
 
     response = r.get('http://localhost:5000/api/v1/auth',

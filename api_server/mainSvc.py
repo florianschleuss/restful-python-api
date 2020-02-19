@@ -5,7 +5,7 @@ from flask_httpauth import HTTPBasicAuth
 from flask_restful import Api, reqparse
 
 import calculatorController
-import nameController
+import customerController
 
 users = {
     'demo': 'demo',
@@ -14,8 +14,7 @@ app = Flask(__name__)
 api = Api(app)
 auth = HTTPBasicAuth()
 
-name = nameController.Controller()
-calc = calculatorController.Controller()
+customer_controller = customerController.Controller()
 
 
 @auth.verify_password
@@ -30,10 +29,26 @@ def connection_test():
     return jsonify({'message': 'works'})
 
 
-@app.route('/api/v1/name/welcome', methods=['POST'])
-def welcome():
-    data = request.json
-    return jsonify({'message': name.welcome(data['name'])})
+@app.route('/api/v1/customers', methods=['GET'])
+def customers():
+    return jsonify(customer_controller.get_customers())   
+
+
+@app.route('/api/v1/customer/<customer_id>', methods=['GET','POST', 'PATCH', 'DELETE'])
+def customer(customer_id):
+    if request.method == 'GET':
+        return jsonify(customer_controller.get_customer(customer_id))
+    elif request.method == 'POST':
+        data = request.json
+        return jsonify(customer_controller.post_customer(customer_id, data))
+    elif request.method == 'PATCH':
+        data = request.json
+        return jsonify(customer_controller.patch_customer(customer_id, data))
+    elif request.method == 'DELETE':
+        return jsonify(customer_controller.delete_customer(customer_id))
+    else:
+        return jsonify({'message': 'error occurred'}), 500
+    
 
 
 @app.route('/api/v1/auth', methods=['GET'])
