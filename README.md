@@ -24,7 +24,7 @@
 4. Start the Python Rest Client from repository root folder with:
 
    ``` bash
-   python ./api_client/client.py
+   python ./api_client/interface.py
    ```
 
 ## License

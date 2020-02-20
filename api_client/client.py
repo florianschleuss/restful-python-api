@@ -3,11 +3,33 @@ from requests.auth import HTTPBasicAuth
 
 r = requests
 
+class api_client:
+
+    def __init__(self, base_url):
+        self.API_BASE_URL = base_url
+
+    def post(self, resource, data):
+        response = r.post(
+        self.API_BASE_URL + resource, json=data)
+        return response
+
+    def patch(self, resource, data):
+        response = r.patch(
+        self.API_BASE_URL + resource, json=data)
+        return response
+
+    def get(self, resource):
+        response = r.get(self.API_BASE_URL + resource)
+        return response
+
+    def delete(self, resource):
+        response = r.delete(self.API_BASE_URL + resource)
+        return response
+
+
+
 
 def main():
-    response = r.get('http://localhost:5000/api/v1/test')
-    print(response.text)
-
     response = r.post(
         'http://localhost:5000/api/v1/customer/hpe', json={"name": "Hewlette Packard Enterprise"})
     print(response.text)
