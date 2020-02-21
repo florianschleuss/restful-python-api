@@ -6,6 +6,7 @@ import client
 
 menu_actions = {}
 api = client.api_client('http://localhost:5000/api/v1')
+api.auth('demo', 'demo')
 
 def main_menu():
     os.system('clear')
@@ -55,6 +56,7 @@ def patch_menu():
 def get_menu():
     print("Get existing element !\n")
     print("31. Get customer")
+    print("32. Get all customers")
     menu_suffix()
     return
 
@@ -138,6 +140,14 @@ def get_customer():
     menu_suffix()
     return
 
+def get_all_customers():
+    print("This are all customers:\n")
+
+    print(api.get('/customers').text)
+
+    menu_suffix()
+    return
+
 def del_customer():
     print("Please insert customer information:\n")
     customer = {}
@@ -157,6 +167,7 @@ menu_actions = {
     '21': patch_customer,
     '3': get_menu,
     '31': get_customer,
+    '32': get_all_customers,
     '4': delete_menu,
     '41': del_customer,
     '9': back,
