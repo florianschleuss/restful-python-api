@@ -1,4 +1,3 @@
-import json
 import os
 import sys
 
@@ -57,6 +56,7 @@ def get_menu():
     print("Get existing element !\n")
     print("31. Get customer")
     print("32. Get all customers")
+    print("33. Get all locations")
     menu_suffix()
     return
 
@@ -148,6 +148,14 @@ def get_all_customers():
     menu_suffix()
     return
 
+def get_all_locations():
+    print("This are all locations:\n")
+
+    print(api.get('/locations').text)
+
+    menu_suffix()
+    return
+
 def del_customer():
     print("Please insert customer information:\n")
     customer = {}
@@ -168,6 +176,7 @@ menu_actions = {
     '3': get_menu,
     '31': get_customer,
     '32': get_all_customers,
+    '33': get_all_locations,
     '4': delete_menu,
     '41': del_customer,
     '9': back,

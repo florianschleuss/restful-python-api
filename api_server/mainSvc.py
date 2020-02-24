@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 from flask_httpauth import HTTPBasicAuth
 from flask_restful import Api, reqparse
 
-import calculatorController
+import locationController
 import customerController
 
 users = {
@@ -15,6 +15,7 @@ api = Api(app)
 auth = HTTPBasicAuth()
 
 customer_controller = customerController.Controller()
+location_controller = locationController.Controller()
 
 
 @auth.verify_password
@@ -30,8 +31,15 @@ def connection_test():
 
 
 @app.route('/api/v1/customers', methods=['GET'])
+@auth.login_required
 def customers():
-    return jsonify(customer_controller.get_customers())   
+    return jsonify(customer_controller.get_customers())
+
+
+@app.route('/api/v1/locations', methods=['GET'])
+@auth.login_required
+def locations():
+    return jsonify(location_controller.get_locations(customer_controller.get_customers()))
 
 
 @app.route('/api/v1/customer/<customer_id>', methods=['GET','POST', 'PATCH', 'DELETE'])
