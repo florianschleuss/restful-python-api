@@ -58,6 +58,10 @@ def customer(customer_id):
         return jsonify({'message': 'error occurred'}), 500
     
 
+@app.route('/api/v1/location/<location>', methods=['GET'])
+def location(location):
+    return jsonify(location_controller.get_location(location, customer_controller.get_customers()))
+
 
 @app.route('/api/v1/auth', methods=['GET'])
 @auth.login_required

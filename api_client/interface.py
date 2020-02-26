@@ -55,8 +55,9 @@ def patch_menu():
 def get_menu():
     print("Get existing element !\n")
     print("31. Get customer")
-    print("32. Get all customers")
-    print("33. Get all locations")
+    print("32. Get location")
+    print("33. Get all customers")
+    print("34. Get all locations")
     menu_suffix()
     return
 
@@ -156,6 +157,17 @@ def get_all_locations():
     menu_suffix()
     return
 
+def get_location():
+    print("Please insert location name:\n")
+    print("Location name:")    
+    name = input(" >>  ")
+
+    print("This are all customers under this location")
+    print(api.get('/location/{}'.format(name)).text)
+
+    menu_suffix()
+    return
+
 def del_customer():
     print("Please insert customer information:\n")
     customer = {}
@@ -175,8 +187,9 @@ menu_actions = {
     '21': patch_customer,
     '3': get_menu,
     '31': get_customer,
-    '32': get_all_customers,
-    '33': get_all_locations,
+    '32': get_location,
+    '33': get_all_customers,
+    '34': get_all_locations,
     '4': delete_menu,
     '41': del_customer,
     '9': back,
