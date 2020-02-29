@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request #jsonify erstellt HTTP response 
 from flask_httpauth import HTTPBasicAuth
 from flask_restful import Api, reqparse
 
@@ -10,7 +10,7 @@ import customerController
 users = {
     'demo': 'demo',
 }
-app = Flask(__name__)
+app = Flask(__name__) #Erzeugt ein App Objekt aus Flask
 api = Api(app)
 auth = HTTPBasicAuth()
 
@@ -42,7 +42,7 @@ def locations():
     return jsonify(location_controller.get_locations(customer_controller.get_customers()))
 
 
-@app.route('/api/v1/customer/<customer_id>', methods=['GET','POST', 'PATCH', 'DELETE'])
+@app.route('/api/v1/customer/<customer_id>', methods=['GET','POST', 'PATCH', 'DELETE']) #Service führt @POST, @GET, @PATCH @DELETE aus und gibt Ergebnis zurück
 def customer(customer_id):
     if request.method == 'GET':
         return jsonify(customer_controller.get_customer(customer_id))
@@ -66,4 +66,4 @@ def authentification_test():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True) #starts the web server and ready to handle the request
