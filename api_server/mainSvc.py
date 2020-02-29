@@ -12,14 +12,14 @@ users = {
 }
 app = Flask(__name__) #Erzeugt ein App Objekt aus Flask
 api = Api(app)
-auth = HTTPBasicAuth()
+auth = HTTPBasicAuth() #Authentifizierung 
 
 customer_controller = customerController.Controller()
 location_controller = locationController.Controller()
 
-
+#Passwort Verifizierung
 @auth.verify_password
-def verify_password(username, password):
+def verify_password(username, password): 
     if username in users:
         return users[username] == password
     return False
