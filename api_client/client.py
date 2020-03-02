@@ -5,10 +5,12 @@ r = requests
 
 class api_client:
 
+    #Instanzierung
     def __init__(self, base_url):
         self.API_BASE_URL = base_url
         self.authentificiation = False
 
+    #Authentifizierung
     def auth(self, name, passwd):
         self.name = name
         self.passwd = passwd

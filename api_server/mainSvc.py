@@ -24,18 +24,18 @@ def verify_password(username, password):
         return users[username] == password
     return False
 
-
+#Verbindungstest
 @app.route('/api/v1/test', methods=['GET'])
 def connection_test():
     return jsonify({'message': 'works'})
 
-
+#Verifizierung notwendig Customer
 @app.route('/api/v1/customers', methods=['GET'])
 @auth.login_required
 def customers():
     return jsonify(customer_controller.get_customers())
 
-
+#Verifizierung notwendig Location
 @app.route('/api/v1/locations', methods=['GET'])
 @auth.login_required
 def locations():
@@ -56,13 +56,13 @@ def customer(customer_id):
         return jsonify(customer_controller.delete_customer(customer_id))
     else:
         return jsonify({'message': 'error occurred'}), 500
-    
 
 @app.route('/api/v1/location/<location>', methods=['GET'])
 def location(location):
     return jsonify(location_controller.get_location(location, customer_controller.get_customers()))
 
 
+#Authentifizierungstest
 @app.route('/api/v1/auth', methods=['GET'])
 @auth.login_required
 def authentification_test():

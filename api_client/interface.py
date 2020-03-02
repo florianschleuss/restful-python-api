@@ -179,6 +179,7 @@ def del_customer():
     menu_suffix()
     return
 
+#Menu Optionen
 menu_actions = {
     'main_menu': main_menu,
     '1': post_menu,
