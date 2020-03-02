@@ -126,6 +126,8 @@ def patch_customer():
     print("Enterprise value in Mrd $:")    
     customer['value'] = input(" >>  ")
 
+    api.patch('/customer/{}'.format(customer['name'].lower().replace(' ', '_')), customer)
+
     print("Customer patched!")
     menu_suffix()
     return
