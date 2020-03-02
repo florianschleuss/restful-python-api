@@ -4,7 +4,7 @@ import sys
 import client
 
 menu_actions = {}
-api = client.api_client('http://localhost:5000/api/v1')
+api = client.api_client('http://localhost:5000/api/v1') #Client referenziert RESTful Web Service per URI
 api.auth('demo', 'demo')
 
 def main_menu():
